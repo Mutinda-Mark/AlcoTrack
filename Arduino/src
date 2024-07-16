@@ -1,1 +1,159 @@
+#include <ESP8266WiFi.h>
+#include <ESP8266HTTPClient.h>
+#include <ArduinoJson.h>
+#include <WiFiUdp.h>
+#include <NTPClient.h>
+
+// WiFi credentials
+const char* ssid = "";
+const char* password = "";
+
+// IP Geolocation API endpoint
+const char* geoAPI = "http://ip-api.com/json";
+
+// MySQL server details
+const char* serverName = "alcotrack/submit_data.php";
+
+// Define the pin connections
+const int mq3Pin = A0;      // Analog pin connected to MQ-3 sensor
+const int motorPin = D5;    // Digital pin connected to motor control
+
+// NTP Client setup
+WiFiUDP ntpUDP;
+NTPClient timeClient(ntpUDP, "pool.ntp.org", 0, 60000); // UTC, update every minute
+
+float latitude = 0.0;
+float longitude = 0.0;
+
+void setup() {
+  // Initialize serial communication for debugging purposes
+  Serial.begin(115200);
+
+  // Initialize the motor pin as an output
+  pinMode(motorPin, OUTPUT);
+  digitalWrite(motorPin, LOW); // Ensure motor is OFF initially
+
+  // Connect to WiFi
+  WiFi.begin(ssid, password);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(1000);
+    Serial.println("Connecting to WiFi...");
+  }
+  Serial.println("Connected to WiFi");
+
+  // Start the NTP client
+  timeClient.begin();
+
+  // Get the location from IP Geolocation
+  getLocation();
+}
+
+void loop() {
+  // Update time client
+  timeClient.update();
+
+  // Read the analog value from the MQ-3 sensor
+  int sensorValue = analogRead(mq3Pin);
+  Serial.println("Sensor Value: " + String(sensorValue)); // Debug output
+
+  // Check the alcohol level and control the motor
+  if (sensorValue > 300) {
+    digitalWrite(motorPin, LOW);  // Turn off motor
+  } else {
+    digitalWrite(motorPin, HIGH); // Turn on motor
+  }
+
+  // Prepare timestamp
+  String formattedTime = timeClient.getFormattedTime(); // Get time
+  unsigned long epochTime = timeClient.getEpochTime(); // Get epoch time
+
+  // Convert epoch time to date
+  time_t now = epochTime;
+  struct tm *timeinfo;
+  timeinfo = localtime(&now);
+
+  // Format date as YYYY-MM-DD
+  char dateStr[11];
+  strftime(dateStr, sizeof(dateStr), "%Y-%m-%d", timeinfo);
+  String formattedDate = String(dateStr);
+
+  // Combine date and time
+  String timestamp = formattedDate + " " + formattedTime;
+
+  // If the location is valid, submit the data
+  if (latitude != 0.0 && longitude != 0.0) {
+    Serial.println("Sending Data - Timestamp: " + timestamp);
+    submitData(latitude, longitude, sensorValue, timestamp);
+  }
+
+  // Wait for 3 seconds before the next reading
+  delay(3000);
+}
+
+void getLocation() {
+  if (WiFi.status() == WL_CONNECTED) {
+    WiFiClient client;
+    HTTPClient http;
+    http.begin(client, geoAPI);
+    int httpResponseCode = http.GET();
+
+    if (httpResponseCode > 0) {
+      String response = http.getString();
+      Serial.println("HTTP Response code: " + String(httpResponseCode));
+      Serial.println("Response: " + response);
+
+      StaticJsonDocument<512> doc;
+      DeserializationError error = deserializeJson(doc, response);
+
+      if (!error) {
+        latitude = doc["lat"];
+        longitude = doc["lon"];
+        Serial.println("Latitude: " + String(latitude, 6));
+        Serial.println("Longitude: " + String(longitude, 6));
+      } else {
+        Serial.println("Failed to parse JSON");
+      }
+    } else {
+      Serial.println("Error on sending GET: " + String(httpResponseCode));
+    }
+
+    http.end();
+  } else {
+    Serial.println("WiFi Disconnected");
+  }
+}
+
+void submitData(float latitude, float longitude, int sensorValue, String timestamp) {
+  if (WiFi.status() == WL_CONNECTED) {
+    WiFiClient client;
+    HTTPClient http;
+    http.begin(client, serverName);
+
+    http.addHeader("Content-Type", "application/json");
+
+    StaticJsonDocument<200> jsonDoc;
+    jsonDoc["V_Timestamp"] = timestamp;
+    jsonDoc["V_Latitude"] = latitude;
+    jsonDoc["V_Longitude"] = longitude;
+    jsonDoc["V_AlcoholLevel"] = sensorValue;
+
+    String jsonString;
+    serializeJson(jsonDoc, jsonString);
+
+    int httpResponseCode = http.POST(jsonString);
+
+    if (httpResponseCode > 0) {
+      String response = http.getString();
+      Serial.println(httpResponseCode);
+      Serial.println(response);
+    } else {
+      Serial.print("Error on sending POST: ");
+      Serial.println(httpResponseCode);
+    }
+
+    http.end();
+  } else {
+    Serial.println("WiFi Disconnected");
+  }
+}
 
