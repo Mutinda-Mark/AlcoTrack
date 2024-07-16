@@ -15,8 +15,8 @@ const char* geoAPI = "http://ip-api.com/json";
 const char* serverName = "alcotrack/submit_data.php";
 
 // Define the pin connections
-const int mq3Pin = A0;      // Analog pin connected to MQ-3 sensor
-const int motorPin = D5;    // Digital pin connected to motor control
+const int mq3Pin = A0;     
+const int motorPin = D5;   
 
 // NTP Client setup
 WiFiUDP ntpUDP;
@@ -26,14 +26,10 @@ float latitude = 0.0;
 float longitude = 0.0;
 
 void setup() {
-  // Initialize serial communication for debugging purposes
   Serial.begin(115200);
-
-  // Initialize the motor pin as an output
   pinMode(motorPin, OUTPUT);
   digitalWrite(motorPin, LOW); // Ensure motor is OFF initially
 
-  // Connect to WiFi
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED) {
     delay(1000);
@@ -41,7 +37,6 @@ void setup() {
   }
   Serial.println("Connected to WiFi");
 
-  // Start the NTP client
   timeClient.begin();
 
   // Get the location from IP Geolocation
