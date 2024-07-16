@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".register">
+    >
+<androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Registrationpg"
+        android:background="@color/white">
+
+    <TextView
+            android:id="@+id/UserLbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Registration"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp" />
+    <TextView
+            android:id="@+id/RegpgLbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Driver Details"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:fontFamily="sans-serif-medium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/UserLbl"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="28dp" />
+    <TextView
+            android:id="@+id/RegFNameLbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="First Name"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/RegpgLbl"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="28dp" />
+    <EditText
+            android:id="@+id/RegFNameTxt"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="John"
+            android:paddingLeft="4dp"
+            android:textColor="@color/black"
+            style="@style/EditTextBorder"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/RegFNameLbl"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginEnd="28dp" />
+    <TextView
+            android:id="@+id/regLNameLbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Last Name"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/RegFNameTxt"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="28dp" />
+
+    <EditText
+            android:id="@+id/regLNameTxt"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Doe"
+            android:paddingLeft="4dp"
+            android:textColor="@color/black"
+            style="@style/EditTextBorder"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/regLNameLbl"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginEnd="28dp" />
+
+    <TextView
+            android:id="@+id/regPhoneLbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phone Number"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/regLNameTxt"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="28dp" />
+
+    <EditText
+            android:id="@+id/regPhoneTxt"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:ems="10"
+            android:inputType="textPersonName|phone"
+            android:hint="070000000"
+            android:maxLength="10"
+            android:minHeight="48dp"
+            android:paddingLeft="4dp"
+            android:textColor="@color/black"
+            style="@style/EditTextBorder"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/regPhoneLbl"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginEnd="28dp" />
+
+    <TextView
+            android:id="@+id/regEmailLbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/regPhoneTxt"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="28dp" />
+
+    <EditText
+            android:id="@+id/regEmailTxt"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:ems="10"
+            android:inputType="textWebEmailAddress|textPersonName|textEmailAddress"
+            android:hint="JohnDoe@gmail.com"
+            android:minHeight="48dp"
+            android:paddingLeft="4dp"
+            android:textColor="@color/black"
+            style="@style/EditTextBorder"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/regEmailLbl"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginEnd="28dp" />
+
+    <TextView
+            android:id="@+id/regPassLbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Password"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/regEmailTxt"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="28dp" />
+
+    <EditText
+            android:id="@+id/regPassTxt"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:hint="*****"
+            android:minHeight="48dp"
+            android:paddingLeft="4dp"
+            android:textColor="@color/black"
+            style="@style/EditTextBorder"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/regPassLbl"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginEnd="28dp" />
+
+    <TextView
+            android:id="@+id/regCPassLbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Confirm Password"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/regPassTxt"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="28dp" />
+
+    <EditText
+            android:id="@+id/regCPassTxt"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:hint="*****"
+            android:minHeight="48dp"
+            android:paddingLeft="4dp"
+            android:textColor="@color/black"
+            style="@style/EditTextBorder"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/regCPassLbl"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginEnd="28dp" />
+
+    <TextView
+            android:id="@+id/ContactRegLbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contact Details"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:fontFamily="sans-serif-medium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/regCPassTxt"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="28dp" />
+
+    <TextView
+            android:id="@+id/ContactFNameLbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="First Name"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ContactRegLbl"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="28dp" />
+
+    <EditText
+            android:id="@+id/ContactFNameTxt"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="John"
+            android:paddingLeft="4dp"
+            android:textColor="@color/black"
+            style="@style/EditTextBorder"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ContactFNameLbl"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginEnd="28dp" />
+    <TextView
+            android:id="@+id/ContactLNameLbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:text="Last Name"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ContactFNameTxt"
+            android:layout_marginTop="20dp" />
+
+    <EditText
+            android:id="@+id/ContactLNameTxt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginEnd="28dp"
+            android:ems="10"
+            android:hint="Doe"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:paddingLeft="4dp"
+            android:textColor="@color/black"
+            style="@style/EditTextBorder"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ContactLNameLbl"
+            android:layout_marginTop="5dp" />
+
+    <TextView
+            android:id="@+id/ContactPhoneLbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:text="Phone Number"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ContactLNameTxt"
+            android:layout_marginTop="10dp" />
+
+    <EditText
+            android:id="@+id/ContactPhoneTxt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginEnd="28dp"
+            android:ems="10"
+            android:hint="070000000"
+            android:inputType="textPersonName|phone"
+            android:maxLength="10"
+            android:minHeight="48dp"
+            android:paddingLeft="4dp"
+            android:textColor="@color/black"
+            style="@style/EditTextBorder"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ContactPhoneLbl"
+            android:layout_marginTop="5dp" />
+
+    <TextView
+            android:id="@+id/ContactEmailLbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:text="Email"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ContactPhoneTxt"
+            android:layout_marginTop="10dp" />
+
+    <EditText
+            android:id="@+id/ContactEmailTxt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginEnd="28dp"
+            android:ems="10"
+            android:hint="JohnDoe@gmail.com"
+            android:inputType="textWebEmailAddress|textPersonName|textEmailAddress"
+            android:minHeight="48dp"
+            android:paddingLeft="4dp"
+            android:textColor="@color/black"
+            style="@style/EditTextBorder"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ContactEmailLbl"
+            android:layout_marginTop="5dp"
+            app:layout_constraintBottom_toTopOf="@+id/RegisterBtn" />
+
+    <Button
+            android:id="@+id/RegisterBtn"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginEnd="28dp"
+            android:layout_marginBottom="20dp"
+            android:text="Register"
+            android:textColor="@color/white"
+
+            android:gravity="center"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ContactEmailTxt" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
