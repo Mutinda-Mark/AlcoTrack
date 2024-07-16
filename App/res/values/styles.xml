@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="EditTextUnderline">
+        <item name="android:background">@drawable/edittext_underline</item>
+    </style>
+
+    <style name="EditTextBorder">
+        <item name="android:background">@drawable/edittext_border</item>
+    </style>
+
+    <style name="ImageViewBorder">
+        <item name="android:background">@drawable/image_border</item>
+    </style>
+
+    <!-- Define a style for the date text appearance -->
+    <style name="CalendarDateTextAppearance">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <!-- Define a style for the CalendarView -->
+    <style name="CalendarViewStyle">
+        <item name="android:background">@color/white</item> <!-- Background color of the CalendarView -->
+        <item name="android:textColor">@color/black</item> <!-- Text color for dates -->
+        <item name="android:weekNumberColor">@color/black</item> <!-- Text color for week numbers -->
+        <item name="android:dateTextAppearance">@style/CalendarDateTextAppearance</item> <!-- Custom date text appearance -->
+        <item name="android:weekDayTextAppearance">@style/CalendarWeekDayTextAppearance</item> <!-- Custom week day text appearance -->
+        <item name="android:headerMonthTextAppearance">@style/CalendarHeaderMonthTextAppearance</item> <!-- Custom month header text appearance -->
+        <item name="android:headerYearTextAppearance">@style/CalendarHeaderYearTextAppearance</item> <!-- Custom year header text appearance -->
+    </style>
+
+    <!-- Define a style for the week day text appearance -->
+    <style name="CalendarWeekDayTextAppearance">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <!-- Define a style for the month header text appearance -->
+    <style name="CalendarHeaderMonthTextAppearance">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Define a style for the year header text appearance -->
+    <style name="CalendarHeaderYearTextAppearance">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+</resources>
